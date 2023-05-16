@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app-of-apps
+  namespace: argocd
+spec:
+  destination:
+    namespace: app-of-apps
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    helm:
+      valueFiles:
+      - values.yaml
+    path: app-of-apps
+    repoURL: https://github.com/koorikla/demo1 # Repo url to the helmchart, reccomended to put to your own so you can try commiting
+    targetRevision: HEAD # Branch
+  syncPolicy:
+    automated: {}
+    syncOptions:
+    - CreateNamespace=true
