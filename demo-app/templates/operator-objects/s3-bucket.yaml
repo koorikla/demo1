@@ -5,11 +5,11 @@
 #   annotations:
 #     # This will be the actual bucket name. It must be globally unique, so you
 #     # probably want to change it before trying to apply this example.
-#     crossplane.io/external-name: crossplane-example-bucket
+#     crossplane.io/external-name: entigo-demo-bucket
 # spec:
 #   forProvider:
 #     objectOwnership: BucketOwnerEnforced
-#     locationConstraint: us-east-1
+#     locationConstraint: eu-west-1
 #     policy:
 #       version: '2012-10-17'
 #       statements:
@@ -28,7 +28,7 @@
 #             # This is unfortunately not currently able to be inferred from a
 #             # reference to test-bucket, and must therefore be set to the ARN of
 #             # test-bucket (i.e. its actual external name).
-#             - "arn:aws:s3:::crossplane-example-bucket"
+#             - "arn:aws:s3:::entigo-demo-bucket"
 #           condition:
 #           - operatorKey: StringEquals
 #             conditions:
@@ -45,4 +45,4 @@
 #               - key: "aws:SourceIp"
 #                 stringValue: "192.0.2.188/32"
 #   providerConfigRef:
-#     name: example
+#     name: aws-provider-config
